@@ -1171,7 +1171,7 @@ namespace predrecon
 
     return cost;
   }
-
+  // 局部TSP问题
   /* [s1, s2] [s3, s4] --> [s1, s4] [s2, s3] */
   /* Reverse neighbor: s1, s3, NoReverse neighbor: s2, s4 */
   void HCSolver::Make2Opt(Site *s1, Site *s2, Site *s3, Site *s4, bool turn)
@@ -1737,7 +1737,6 @@ namespace predrecon
     if (prob2 > 0.5)
     {
       Make2Opt(s1, s2, s3, s4, turn);
-
       std::random_device rdprob3;
       std::mt19937 genprob3(rdprob3());
       std::uniform_real_distribution<> disprob3(0.0, 1.0);

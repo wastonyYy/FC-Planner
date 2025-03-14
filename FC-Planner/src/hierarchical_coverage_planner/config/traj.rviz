@@ -6,8 +6,10 @@ Panels:
       Expanded:
         - /INPUT1/INPUT_MESH1
         - /INPUT1/INPUT_PCLOUD1
+        - /Skeleton1
+        - /Mapping1
       Splitter Ratio: 0.5264706015586853
-    Tree Height: 751
+    Tree Height: 690
   - Class: rviz/Selection
     Name: Selection
   - Class: rviz/Tool Properties
@@ -23,9 +25,10 @@ Panels:
     Name: Views
     Splitter Ratio: 0.5
   - Class: rviz/Time
+    Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: ""
+    SyncSource: InternalSpace
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -33,14 +36,12 @@ Toolbars:
 Visualization Manager:
   Class: ""
   Displays:
-    - Alpha: 1
-      Class: rviz/Axes
+    - Class: rviz/Axes
       Enabled: false
       Length: 20
       Name: Axes
       Radius: 0.10000000149011612
       Reference Frame: <Fixed Frame>
-      Show Trail: false
       Value: false
     - Alpha: 0.5
       Cell Size: 1
@@ -114,7 +115,7 @@ Visualization Manager:
           Color: 255; 0; 0
           Color Transformer: FlatColor
           Decay Time: 0
-          Enabled: false
+          Enabled: true
           Invert Rainbow: false
           Max Color: 255; 255; 255
           Min Color: 0; 0; 0
@@ -129,7 +130,7 @@ Visualization Manager:
           Unreliable: false
           Use Fixed Frame: true
           Use rainbow: true
-          Value: false
+          Value: true
         - Alpha: 1
           Autocompute Intensity Bounds: true
           Autocompute Value Bounds:
@@ -142,7 +143,7 @@ Visualization Manager:
           Color: 0; 0; 255
           Color Transformer: FlatColor
           Decay Time: 0
-          Enabled: false
+          Enabled: true
           Invert Rainbow: false
           Max Color: 255; 255; 255
           Min Color: 0; 0; 0
@@ -157,21 +158,21 @@ Visualization Manager:
           Unreliable: false
           Use Fixed Frame: true
           Use rainbow: true
-          Value: false
+          Value: true
         - Class: rviz/Marker
-          Enabled: false
+          Enabled: true
           Marker Topic: /rosa_vis/le_lines
           Name: lineextract_lines
           Namespaces:
-            {}
+            "": true
           Queue Size: 100
-          Value: false
+          Value: true
         - Class: rviz/Marker
           Enabled: true
           Marker Topic: /rosa_vis/rr_lines
           Name: edges
           Namespaces:
-            {}
+            "": true
           Queue Size: 100
           Value: true
         - Alpha: 0.800000011920929
@@ -207,25 +208,25 @@ Visualization Manager:
           Marker Topic: /rosa_vis/vertex_ID
           Name: vertexID
           Namespaces:
-            {}
+            vertex_ID: true
           Queue Size: 100
           Value: true
         - Class: rviz/MarkerArray
-          Enabled: false
+          Enabled: true
           Marker Topic: /rosa_vis/input_normal
           Name: pcloud_normal
           Namespaces:
-            {}
+            "": true
           Queue Size: 100
-          Value: false
+          Value: true
         - Class: rviz/MarkerArray
-          Enabled: false
+          Enabled: true
           Marker Topic: /rosa_vis/branches
           Name: branches
           Namespaces:
-            {}
+            "": true
           Queue Size: 100
-          Value: false
+          Value: true
         - Alpha: 1
           Autocompute Intensity Bounds: true
           Autocompute Value Bounds:
@@ -238,7 +239,7 @@ Visualization Manager:
           Color: 255; 255; 255
           Color Transformer: RGB8
           Decay Time: 0
-          Enabled: false
+          Enabled: true
           Invert Rainbow: false
           Max Color: 255; 255; 255
           Min Color: 0; 0; 0
@@ -253,7 +254,7 @@ Visualization Manager:
           Unreliable: false
           Use Fixed Frame: true
           Use rainbow: true
-          Value: false
+          Value: true
         - Class: rviz/MarkerArray
           Enabled: true
           Marker Topic: /rosa_debug/checkBranches
@@ -262,7 +263,7 @@ Visualization Manager:
             {}
           Queue Size: 100
           Value: true
-      Enabled: false
+      Enabled: true
       Name: Skeleton
     - Class: rviz/Group
       Displays:
@@ -334,7 +335,7 @@ Visualization Manager:
           Color: 255; 0; 0
           Color Transformer: FlatColor
           Decay Time: 0
-          Enabled: false
+          Enabled: true
           Invert Rainbow: false
           Max Color: 255; 255; 255
           Min Color: 0; 0; 0
@@ -349,8 +350,8 @@ Visualization Manager:
           Unreliable: false
           Use Fixed Frame: true
           Use rainbow: true
-          Value: false
-      Enabled: false
+          Value: true
+      Enabled: true
       Name: Mapping
     - Class: rviz/Group
       Displays:
@@ -599,7 +600,6 @@ Visualization Manager:
             Z: 0
           Pose Color: 255; 85; 255
           Pose Style: None
-          Queue Size: 10
           Radius: 0.029999999329447746
           Shaft Diameter: 0.10000000149011612
           Shaft Length: 0.10000000149011612
@@ -635,25 +635,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/ThirdPersonFollower
-      Distance: 151.15187072753906
+      Distance: 166.1103515625
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
-      Field of View: 0.7853981852531433
       Focal Point:
-        X: -10.926826477050781
-        Y: -10.654403686523438
-        Z: -0.00012803258141502738
+        X: -24.301742553710938
+        Y: 12.27735424041748
+        Z: -0.00012373836943879724
       Focal Shape Fixed Size: false
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.1697952300310135
+      Pitch: 0.20479558408260345
       Target Frame: <Fixed Frame>
-      Yaw: 4.573812007904053
+      Value: ThirdPersonFollower (rviz)
+      Yaw: 4.758814334869385
     Saved:
       - Class: rviz/ThirdPersonFollower
         Distance: 40.93450164794922
@@ -662,11 +662,10 @@ Visualization Manager:
           Stereo Focal Distance: 1
           Swap Stereo Eyes: false
           Value: false
-        Field of View: 0.7853981852531433
         Focal Point:
           X: -4.595006942749023
           Y: 0.3861931562423706
-          Z: -2.5082706997636706e-05
+          Z: -2.5082706997636706e-5
         Focal Shape Fixed Size: true
         Focal Shape Size: 0.05000000074505806
         Invert Z Axis: false
@@ -674,6 +673,7 @@ Visualization Manager:
         Near Clip Distance: 0.009999999776482582
         Pitch: 1.1797970533370972
         Target Frame: <Fixed Frame>
+        Value: ThirdPersonFollower (rviz)
         Yaw: 3.139589309692383
       - Angle: -1.5749993324279785
         Class: rviz/TopDownOrtho
@@ -687,15 +687,16 @@ Visualization Manager:
         Near Clip Distance: 0.009999999776482582
         Scale: 34.78550720214844
         Target Frame: <Fixed Frame>
+        Value: TopDownOrtho (rviz)
         X: 4.145483016967773
         Y: 0.36561644077301025
 Window Geometry:
   Displays:
     collapsed: false
-  Height: 1098
+  Height: 1016
   Hide Left Dock: false
   Hide Right Dock: true
-  QMainWindow State: 000000ff00000000fd000000040000000000000156000003f0fc0200000011fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003d0000032c000000c900fffffffb0000000a0049006d00610067006500000001900000007f0000000000000000fb0000000a00560069006500770073010000036f000000be000000a400fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000000c00430061006d00650072006100000001d1000000b50000000000000000fb0000000a00640065007000740068000000037d000000650000000000000000fb0000000a0049006d0061006700650100000415000000f80000000000000000fb0000000a0049006d00610067006501000003f4000001190000000000000000fb0000000a0049006d0061006700650100000385000001c90000000000000000fb0000000a0049006d0061006700650000000476000000d80000000000000000fb0000000c00430061006d006500720061000000046b000000d80000000000000000000000010000010f00000385fc0200000002fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000006100000003bfc0100000002fb0000000800540069006d00650000000000000006100000041800fffffffb0000000800540069006d0065010000000000000450000000000000000000000424000003f000000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd000000040000000000000156000003a2fc0200000011fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003b000002ed000000c700fffffffb0000000a0049006d00610067006500000001900000007f0000000000000000fb0000000a00560069006500770073010000032e000000af000000a000fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000000c00430061006d00650072006100000001d1000000b50000000000000000fb0000000a00640065007000740068000000037d000000650000000000000000fb0000000a0049006d0061006700650100000415000000f80000000000000000fb0000000a0049006d00610067006501000003f4000001190000000000000000fb0000000a0049006d0061006700650100000385000001c90000000000000000fb0000000a0049006d0061006700650000000476000000d80000000000000000fb0000000c00430061006d006500720061000000046b000000d80000000000000000000000010000010f00000385fc0200000002fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000006100000003bfc0100000002fb0000000800540069006d00650000000000000006100000042700fffffffb0000000800540069006d0065010000000000000450000000000000000000000424000003a200000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Selection:
     collapsed: false
   Time:
@@ -705,5 +706,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1408
-  X: 2934
-  Y: 136
+  X: 512
+  Y: 27

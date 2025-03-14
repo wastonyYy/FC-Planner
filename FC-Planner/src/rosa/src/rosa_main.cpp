@@ -1242,7 +1242,7 @@ namespace predrecon
       }
 	  }
   }
-  
+  // 设置K近邻搜索参数并计算法线
   void ROSA_main::normal_estimation()
   {
     ROS_ERROR("Normal Estimation...");
@@ -1273,6 +1273,7 @@ namespace predrecon
     pcl::getMinMax3D(*P.pts_,min,max);
     double x_scale, y_scale, z_scale, max_scale;
     x_scale = max.x-min.x; y_scale = max.y-min.y; z_scale = max.z-min.z; 
+    // 判断 xyz哪边最长作为max_scale
     if (x_scale >= y_scale)
       max_scale = x_scale;
     else 
@@ -1281,8 +1282,9 @@ namespace predrecon
       max_scale = z_scale;
     
     norm_scale = max_scale;
+    // 计算所有原始点云的质心
     pcl::compute3DCentroid(*P.pts_, centroid);
-
+    // 归一化坐标点
     for (int i=0; i<(int)P.pts_->points.size(); ++i)
     {
       P.pts_->points[i].x = (P.pts_->points[i].x-centroid(0))/max_scale;
@@ -1296,9 +1298,10 @@ namespace predrecon
     P.cloud_with_normals.reset(new pcl::PointCloud<pcl::PointNormal>);
     pcl::PointCloud<pcl::PointNormal>::Ptr temp_all(new pcl::PointCloud<pcl::PointNormal>);
     pcl::PointCloud<pcl::PointNormal>::Ptr temp_all_down(new pcl::PointCloud<pcl::PointNormal>);
+    // 通过concatenateFields函数将point和normal组合起来形成PointNormal点云数据
     pcl::concatenateFields (*P.pts_, *P.normals_, *temp_all_down);
     pcl::concatenateFields (*P.pts_, *P.normals_, *P.cloud_with_normals);
-
+    // 点云下采样
     /* voxel grid downsample */
     int upper_size = estNum;
     int curPtSize = (int)temp_all_down->points.size();
@@ -1308,7 +1311,6 @@ namespace predrecon
       vg.setInputCloud(temp_all_down);
       vg.setLeafSize(pt_downsample_voxel_size, pt_downsample_voxel_size, pt_downsample_voxel_size);
       vg.filter(*temp_all);
-      
       curPtSize = (int)temp_all->points.size();
       if (curPtSize > upper_size)
       {
@@ -1334,7 +1336,7 @@ namespace predrecon
     P.nrs_mat.resize(pcd_size_, 3);
     pcl::PointXYZ pt;
     pcl::Normal normal;
-
+    // 保存处理后的点云数据
     for (int i=0; i<pcd_size_; ++i)
     {
       pt.x = P.cloud_with_normals->points[i].x; pt.y = P.cloud_with_normals->points[i].y; pt.z = P.cloud_with_normals->points[i].z; 
@@ -1343,8 +1345,12 @@ namespace predrecon
       normal.normal_z = -P.cloud_with_normals->points[i].normal_z;
       P.pts_->points.push_back(pt);
       P.normals_->points.push_back(normal);
-      P.pts_mat(i,0) = P.pts_->points[i].x; P.pts_mat(i,1) = P.pts_->points[i].y; P.pts_mat(i,2) = P.pts_->points[i].z;
-      P.nrs_mat(i,0) = P.normals_->points[i].normal_x; P.nrs_mat(i,1) = P.normals_->points[i].normal_y; P.nrs_mat(i,2) = P.normals_->points[i].normal_z;
+      P.pts_mat(i,0) = P.pts_->points[i].x; 
+      P.pts_mat(i,1) = P.pts_->points[i].y; 
+      P.pts_mat(i,2) = P.pts_->points[i].z;
+      P.nrs_mat(i,0) = P.normals_->points[i].normal_x; 
+      P.nrs_mat(i,1) = P.normals_->points[i].normal_y; 
+      P.nrs_mat(i,2) = P.normals_->points[i].normal_z;
     }
 
     auto norm_t2 = std::chrono::high_resolution_clock::now();

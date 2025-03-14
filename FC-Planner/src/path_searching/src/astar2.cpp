@@ -34,6 +34,12 @@ Astar::~Astar() {
 
 void Astar::init_hc(ros::NodeHandle& nh)
 {
+  // 从 ROS 参数服务器 获取 A* 相关参数：
+  //  resolution_（地图分辨率）
+  //  lambda_heu_hc_（启发式搜索的比重）
+  //  max_search_time_（最大搜索时间）
+  //  allocate_num_（预分配节点数）
+  //  zFlag、groundz、safeheight（高度约束）
   nh.param("astar/resolution_astar", resolution_, -1.0);
   nh.param("astar/lambda_heu_hc", lambda_heu_hc_, -1.0);
   nh.param("astar/max_search_time", max_search_time_, -1.0);
@@ -54,7 +60,7 @@ void Astar::init_hc(ros::NodeHandle& nh)
   early_terminate_cost_ = 0.0;
 
 }
-
+// 存储地图指针，用于查询占据信息和地图索引转换。
 void Astar::setMap(const SDFMap::Ptr& hc_map_)
 {
   this->map_hc_ = hc_map_;
